@@ -1,0 +1,39 @@
+.container{
+    background-color: #FFE600;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.input{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 60%;
+    padding: 10px;
+    margin-left: 13px;
+    border: 0;
+    outline: none;
+}
+
+.background{
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    top: 0px;
+    right: 1.5rem;
+    background: #EEEEEE;
+    align-items: flex-start;
+}
+
+.lupa{
+    padding: 10px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.logo{
+    width: 63px;
+    margin: 6px;
+}
