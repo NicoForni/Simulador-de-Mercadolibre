@@ -2,7 +2,7 @@ import "./Search.css";
 
 const Search = () => {
     
-    const a = "a"
+    
 
     return(
             <div className="container">
