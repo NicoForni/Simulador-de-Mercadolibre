@@ -2,6 +2,8 @@ import "./Search.css";
 
 const Search = () => {
     
+    const a = "a"
+
     return(
             <div className="container">
                 <img src="/images/Logo_ML@2x.png.png" className="logo" alt="logo"></img>
