@@ -1,0 +1,21 @@
+
+.container-title{
+    display: flex;
+    justify-content: center;
+    color: #666666;
+    margin-right: 58%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.container-items{    
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-left: 17%;
+    margin-right: 18%;
+}
+
+.container-image{
+    margin-right: auto;
+}
