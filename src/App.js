@@ -7,7 +7,7 @@ function App() {
   return (   
     <>
     <Search/> 
-    {/* <ItemSearch/> */}
+    <ItemSearch/>
     <ItemDetail/>
     </>
   );
