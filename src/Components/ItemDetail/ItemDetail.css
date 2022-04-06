@@ -1,0 +1,57 @@
+.container-detail{
+    background-color: white;
+    display: flex;    
+    position: relative;
+    margin-left: 16%;
+    margin-right: 16%;   
+    padding: 15px;  
+    height: 50rem;
+}
+
+.image-detail{
+    width: 680px;
+    height: 680px;    
+    border-radius: 4px;
+}
+
+.container-name{
+    position: absolute;
+    right: 88px;    
+}
+
+.container-name h4{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.container-name h3{
+    font-size: 24px;
+}
+
+.container-name h2{
+    font-size: 46px;
+}
+
+.comprar{
+    position: absolute;
+    left: 0;
+    top: 12rem;
+    background: #3483FA;
+    border: none;
+    color: white;
+    padding: 9px;
+    width: 17rem;
+    border-radius: 4px;
+}
+
+.container-text-description h2{
+    position: absolute;
+    top: 45rem;
+    left: 20px
+}
+
+.container-text-description h3{
+    position: absolute;
+    top: 49rem;
+    left: 20px;
+}
