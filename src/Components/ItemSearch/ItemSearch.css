@@ -16,6 +16,22 @@
     margin-right: 18%;
 }
 
+.container-item {
+    display: grid;
+    grid-template-columns: auto 22rem 60rem;
+    margin-left: 22%;
+    padding: 1.5% 1rem;    
+}
+
 .container-image{
-    margin-right: auto;
+    width: 180px;
+    height: 180px;   
+}
+
+.container-description{
+    margin-left: 18px;
+}
+
+.container-place{
+    margin-left: 40rem;
 }
