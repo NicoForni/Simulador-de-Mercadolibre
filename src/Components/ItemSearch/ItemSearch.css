@@ -1,9 +1,8 @@
 
 .container-title{
-    display: flex;
-    justify-content: center;
+    display: flex;    
     color: #666666;
-    margin-right: 58%;
+    margin-left: 16%;
     margin-top: 15px;
     margin-bottom: 15px;
 }

@@ -37,3 +37,9 @@
     width: 63px;
     margin: 6px;
 }
+
+.shipping{
+    position: absolute;
+    top: 24px;
+    left: 20rem;
+}

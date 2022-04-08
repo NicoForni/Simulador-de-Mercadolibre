@@ -1,11 +1,12 @@
 import "./ItemSearch.css";
 
-const ItemSearch = () => {
+
+const ItemSearch = () => {    
     
-    
+
     return(
         <>
-            <div className="container-title">Electronica - otra cosa</div>                
+            <div className="container-title">Electronica - subcategoria - modelo</div>                
             <div className="container-items">                                                     
                 <img className="container-image" src="https://i0.wp.com/hipertextual.com/wp-content/uploads/2017/06/playa-sol.jpg?fit=960%2C638&ssl=1" alt="product" ></img>
                 <div className="container-description"><h2>$1999</h2><br/>descripcion larga del articulo</div>                

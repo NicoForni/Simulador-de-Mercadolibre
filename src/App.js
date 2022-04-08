@@ -1,6 +1,6 @@
 import Search from './Components/Search/Search';
 import ItemSearch from './Components/ItemSearch/ItemSearch';
-import ItemDetail from './Components/ItemDetail/ItemDetail';
+//import ItemDetail from './Components/ItemDetail/ItemDetail';
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
     <Search/> 
     <ItemSearch/>
-    <ItemDetail/>
+    {/* <ItemDetail/> */}
     </>
   );
 }
