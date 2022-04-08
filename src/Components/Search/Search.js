@@ -1,5 +1,6 @@
 import "./Search.css";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+//import { Link } from "react-router-dom";
 
 const Search = () => {
     const [text, setText] = useState("");
@@ -20,7 +21,7 @@ const Search = () => {
     
 
     return(<>
-            <div className="container">
+             <div className="container">
                 <img src="/images/Logo_ML@2x.png.png" className="logo" alt="logo"></img>
                 <input className="input" placeholder="Nunca dejes de buscar" name="textSearch" onChange={e => setText(e.target.value)}></input>
                 <div className="background">
