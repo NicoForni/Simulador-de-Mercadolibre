@@ -4,19 +4,21 @@ import React, { useEffect, useState } from 'react';
 
 const Search = () => {
     const [text, setText] = useState("");
-    const [data, setData] = useState([]);    
+    const [data, setData] = useState([]);       
 
     const buscar = async() => {
+        
         const user = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${text}`)
-        const data = await user.json()
-        setData(data.results.slice(0,4));       
-        //console.log(data.results);
-    }
+        const data = await user.json()                
+            setData(data.results.slice(0,4));       
+            //console.log(data.results);
+        
+    };
 
     useEffect(() => {
-      buscar()
+        buscar()                                           
     
-    }, [text]) //eslint-disable-line
+    }, []) //eslint-disable-line
     
     
 
@@ -44,7 +46,7 @@ const Search = () => {
                 })} 
                 </ul>            
             )        
-            : (null)} 
+            : (null)}                 
             </>
     )
 }

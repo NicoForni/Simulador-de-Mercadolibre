@@ -14,7 +14,7 @@ function App() {
         <Route path='/itemssearch' element={<ItemSearch/>} />
         <Route path='/items/:id' element={<ItemDetail/>} />        
       </Routes> 
-    </BrowserRouter>
+    </BrowserRouter> 
     </>
   );
 }

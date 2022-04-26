@@ -1,7 +1,22 @@
 import "./ItemDetail.css";
+import React, { useEffect, useState } from 'react';
 
-const ItemDetail = () => {
+
+const ItemDetail = () => {         
+    // const [datos, setDatos] = useState([])
+ 
+
+    // const description = async() => {
+    //     const description = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
+    //     const item = await description.json()       
+    //     console.log(datos.results);
+    // }
+
+
+    // useEffect(() => {
+    //     description()
     
+    // }, []) // eslint-disable-line
 
 
     return(
