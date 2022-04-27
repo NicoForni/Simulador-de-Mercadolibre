@@ -1,27 +1,34 @@
 import "./ItemDetail.css";
 import React, { useEffect, useState } from 'react';
+import Search from "../Search/Search";
+import { useParams } from "react-router-dom";
 
 
-const ItemDetail = () => {         
-    // const [datos, setDatos] = useState([])
+const ItemDetail = () => {    
+    const [datos, setDatos] = useState([]);     
+    const {id} = useParams();   
  
 
-    // const description = async() => {
-    //     const description = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
-    //     const item = await description.json()       
-    //     console.log(datos.results);
-    // }
+    const description = async() => {
+        const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
+        const datos = await description.json()  
+            setDatos(datos)     
+            //console.log(datos);
+    }
 
 
-    // useEffect(() => {
-    //     description()
+    useEffect(() => {
+        description()
     
-    // }, []) // eslint-disable-line
+    }, [id]) // eslint-disable-line
 
 
     return(
         <>
-            <div className="container-title">Electronica - otra cosa</div>
+        <Search/>        
+        {datos.map(item => {
+                    return <li key={item.id}>
+            <div className="container-title">Electronica</div>
             <div className="container-detail">
                 <img className="image-detail" src="https://i0.wp.com/hipertextual.com/wp-content/uploads/2017/06/playa-sol.jpg?fit=960%2C638&ssl=1" alt="product"></img>
                 <div className="container-name">
@@ -34,7 +41,9 @@ const ItemDetail = () => {
                     <h2>Descripcion</h2>
                     <h3>Texto</h3>
                 </div>
-            </div>                
+            </div>   
+            </li>
+                })}               
         </>
     )
 }
