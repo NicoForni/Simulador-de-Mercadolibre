@@ -13,8 +13,9 @@ const ItemDetail = () => {
         const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
         const datos = await description.json()  
             setDatos(datos)     
-            //console.log(datos);
+            console.log(datos);
     }
+
 
 
     useEffect(() => {
@@ -25,16 +26,14 @@ const ItemDetail = () => {
 
     return(
         <>
-        <Search/>        
-        {datos.map(item => {
-                    return <li key={item.id}>
+        <Search/>                
             <div className="container-title">Electronica</div>
             <div className="container-detail">
-                <img className="image-detail" src="https://i0.wp.com/hipertextual.com/wp-content/uploads/2017/06/playa-sol.jpg?fit=960%2C638&ssl=1" alt="product"></img>
+                <img className="image-detail" src={datos.thumbnail} alt={datos.title}></img>
                 <div className="container-name">
-                    <h4>Nuevo-234 vendidos</h4><br/>
-                    <h3>Sombrero de Oxford rojo</h3><br/>
-                    <h2>$1999</h2>
+                    <h4>{ `${datos?.condition === 'new' ? 'Nuevo' : 'Usado'}` } {datos.sold_quantity} vendidos</h4><br/>
+                    <h3>{datos.title}</h3><br/>
+                    <h2>$ {datos.price}</h2>
                     <button className="comprar">Comprar</button>                    
                 </div>                                    
                 <div className="container-text-description">
@@ -42,8 +41,7 @@ const ItemDetail = () => {
                     <h3>Texto</h3>
                 </div>
             </div>   
-            </li>
-                })}               
+                  
         </>
     )
 }
