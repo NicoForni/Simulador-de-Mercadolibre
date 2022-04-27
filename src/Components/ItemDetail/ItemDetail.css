@@ -12,11 +12,12 @@
     width: 680px;
     height: 680px;    
     border-radius: 4px;
+    margin-right: 5%;
 }
 
 .container-name{
-    position: absolute;
-    right: 3px;    
+    display: flex;
+    flex-direction: column;
 }
 
 .container-name h4{
@@ -33,9 +34,7 @@
 }
 
 .comprar{
-    position: absolute;
-    left: 0;
-    top: 12rem;
+    margin-inline: auto;
     background: #3483FA;
     border: none;
     color: white;

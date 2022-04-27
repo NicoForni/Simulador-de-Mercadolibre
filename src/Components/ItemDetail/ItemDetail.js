@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 
 
 const ItemDetail = () => {    
-    const [datos, setDatos] = useState([]);     
+    const [datos, setDatos] = useState([]);    
+    const [texto, setTexto] = useState([]); 
     const {id} = useParams();   
  
 
@@ -13,13 +14,20 @@ const ItemDetail = () => {
         const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
         const datos = await description.json()  
             setDatos(datos)     
-            console.log(datos);
+            //console.log(datos);
     }
 
+    const textProduct = async() => {
+        const textProduct = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
+        const texto = await textProduct.json()
+            setTexto(texto)
+            //console.log(texto.plain_text)
+    }
 
 
     useEffect(() => {
         description()
+        textProduct()
     
     }, [id]) // eslint-disable-line
 
@@ -33,12 +41,12 @@ const ItemDetail = () => {
                 <div className="container-name">
                     <h4>{ `${datos?.condition === 'new' ? 'Nuevo' : 'Usado'}` } {datos.sold_quantity} vendidos</h4><br/>
                     <h3>{datos.title}</h3><br/>
-                    <h2>$ {datos.price}</h2>
+                    <h2>$ {datos.price}</h2><br/>
                     <button className="comprar">Comprar</button>                    
                 </div>                                    
                 <div className="container-text-description">
-                    <h2>Descripcion</h2>
-                    <h3>Texto</h3>
+                    <h2>Descripción del producto</h2>
+                    <h3>{texto.plain_text}</h3>
                 </div>
             </div>   
                   
