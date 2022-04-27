@@ -1,6 +1,7 @@
 import "./Search.css";
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import ItemSearch from "../ItemSearch/ItemSearch";
 
 
 const Search = () => {
@@ -8,12 +9,14 @@ const Search = () => {
     const [data, setData] = useState([]);        
 
     const buscar = async() => {
-        
-        const user = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${text}`)
-        const data = await user.json()                
-            setData(data.results.slice(0,4));       
-            //console.log(data.results);
-        
+        try {
+            const user = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${text}`)
+            const data = await user.json()                
+                setData(data.results.slice(0,4));       
+                //console.log(data.results);                
+        } catch (error) {
+            document.write(error," Hubo un error, intente mas tarde");                    
+        }                
     };
 
     useEffect(() => {
@@ -33,18 +36,11 @@ const Search = () => {
             </div>  
             {data.length > 0 ?
             (
-                <ul>
-                {data.map(item => {
-                    return <li key={item.id}>
-                         <div className="container-items">                                                                           
-                         <Link to={`/items/${item.id}`}><img className="container-image" src={item.thumbnail} alt="product" ></img></Link>
-                            <div className="container-description">
-                                <h2>$ {item.price}</h2> {item.shipping.free_shipping === true && (<img className="shipping" src="/images/ic_shipping.png" alt="shipping"></img>) }
-                                <br/>{item.title}</div>                
-                            <div className="container-place">{item.address.state_name}</div>                                                         
-                        </div>                          
-                        </li>
-                })}     
+                <ul> 
+                    <div className="container-title">Electronica - subcategoria - modelo</div>
+                {data.map((item) => (
+                    <ItemSearch item={item} key={item.id} />                    
+                ))}     
                 </ul> 
             )        
             : (null)}                 

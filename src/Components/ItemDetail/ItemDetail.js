@@ -11,10 +11,15 @@ const ItemDetail = () => {
  
 
     const description = async() => {
-        const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
-        const datos = await description.json()  
-            setDatos(datos)     
-            //console.log(datos);
+        try {
+            const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
+            const datos = await description.json()  
+                setDatos(datos)     
+                //console.log(datos);
+            
+        } catch (error) {
+            document.write(error," Hubo un error, intente mas tarde");
+        }
     }
 
     const textProduct = async() => {
