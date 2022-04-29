@@ -13,9 +13,7 @@ const ItemSearch = ({item}) => {
                         <h2>$ {item.price}</h2> {item.shipping.free_shipping === true && (<img className="shipping" src="/images/ic_shipping.png" alt="shipping"></img>) }
                         <br/>{item.title}</div>                
                     <div className="container-place">{item.address.state_name}</div>                                                         
-            </div>                          
-                       
-                                     
+            </div>                                                                         
         </>
     )
 }

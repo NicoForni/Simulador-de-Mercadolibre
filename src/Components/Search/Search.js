@@ -8,11 +8,13 @@ import Home from "../Home/Home";
 const Search = () => {
     const [data, setData] = useState([]);   
     const {texto} = useParams();    
+    const [loading, setLoading] = useState(true)
 
     const buscar = async() => {
         try {
             const user = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${texto}`)
-            const data = await user.json()                
+            const data = await user.json()      
+                setLoading(false)          
                 setData(data.results.slice(0,4));       
                 //console.log(data.results);                
         } catch (error) {
@@ -24,21 +26,23 @@ const Search = () => {
     useEffect(() => {
         buscar()                                           
 
-    }, []) //eslint-disable-line
+    }, [texto]) //eslint-disable-line
       
 
     return(<> 
-            <Home/>             
+            <Home/>
+            <div className="loading">{loading && <h2>Loading products...</h2>  }</div>              
             {data.length > 0 && texto !== undefined ?
             (
-                <ul> 
+                <ul>                     
                     <div className="container-title">Electronica - subcategoria - modelo</div>
                 {data.map((item) => (
                     <ItemSearch item={item} key={item.id} />                    
                 ))}     
                 </ul> 
             )        
-            : (null)}                 
+            : (null)}   
+           
             </>
     )
 }

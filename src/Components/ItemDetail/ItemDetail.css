@@ -10,9 +10,7 @@
 
 .image-detail{
     width: 680px;
-    height: 680px;    
-    border-radius: 4px;
-    margin-right: 5%;
+    height: 680px;         
 }
 
 .container-name{
@@ -42,6 +40,7 @@
     width: 17rem;
     border-radius: 4px;
 }
+
 
 .container-text-description h2{
     position: absolute;

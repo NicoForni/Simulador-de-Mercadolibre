@@ -7,15 +7,16 @@ import { useParams } from "react-router-dom";
 const ItemDetail = () => {    
     const [datos, setDatos] = useState([]);    
     const [texto, setTexto] = useState([]); 
-    const {id} = useParams();        
-    const [category, setCategory] = useState([]);    
+    const {id} = useParams();      
+    const [category, setCategory] = useState([]);        
 
     const description = async() => {
         try {
             const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
             const datos = await description.json()  
-                setDatos(datos)     
+                setDatos(datos)   
                 //console.log(datos);                
+                //return datos                 
             
         } catch (error) {
             document.write(error," Hubo un error, intente mas tarde");
@@ -28,13 +29,14 @@ const ItemDetail = () => {
             setTexto(texto)
             //console.log(texto.plain_text)            
     }
-
-    const categoria = async() => {        
-            const categoria = await fetch(`https://api.mercadolibre.com/sites/MLA/search?category=MLA6656`)
+    
+    const categoria = async() => {                     
+            const idCategoria = datos.category_id
+            //console.log(idCategoria);    
+            const categoria = await fetch(`https://api.mercadolibre.com/sites/MLA/search?category=${idCategoria}`)
             const category = await categoria.json()
-                setCategory(category)                                
-                //console.log(category.filters[0].values[0].name);                  
-                                                                           
+                setCategory(category)                                                
+                console.log(category.filters[0].values[0].name);                                  
     }; 
 
     useEffect(() => {
@@ -48,7 +50,7 @@ const ItemDetail = () => {
     return(
         <>
         <Search/>     
-            <div className="container-title">{category.filters?.[0].values?.[0].name}</div>                   
+            {/* <div className="container-title">{category.filters?.[0].values?.[0].name}</div> */}
             <div className="container-detail">
                 <img className="image-detail" src={datos.pictures?.[0].url} alt={datos.title}></img>
                 <div className="container-name">
