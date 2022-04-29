@@ -9,14 +9,13 @@ const ItemDetail = () => {
     const [texto, setTexto] = useState([]); 
     const {id} = useParams();      
     const [category, setCategory] = useState([]);        
-
+    
     const description = async() => {
         try {
             const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
             const datos = await description.json()  
                 setDatos(datos)   
-                //console.log(datos);                
-                //return datos                 
+                //console.log(datos);                                             
             
         } catch (error) {
             document.write(error," Hubo un error, intente mas tarde");
@@ -36,7 +35,7 @@ const ItemDetail = () => {
             const categoria = await fetch(`https://api.mercadolibre.com/sites/MLA/search?category=${idCategoria}`)
             const category = await categoria.json()
                 setCategory(category)                                                
-                console.log(category.filters[0].values[0].name);                                  
+                //console.log(category.filters[0].values[0].name);                                  
     }; 
 
     useEffect(() => {
@@ -50,21 +49,30 @@ const ItemDetail = () => {
     return(
         <>
         <Search/>     
-            {/* <div className="container-title">{category.filters?.[0].values?.[0].name}</div> */}
-            <div className="container-detail">
-                <img className="image-detail" src={datos.pictures?.[0].url} alt={datos.title}></img>
-                <div className="container-name">
-                    <h4>{ `${datos?.condition === 'new' ? 'Nuevo' : 'Usado'}` } {datos.sold_quantity} vendidos</h4><br/>
-                    <h3>{datos.title}</h3><br/>
-                    <h2>$ {datos.price}</h2><br/>
-                    <button className="comprar">Comprar</button>                    
-                </div>                                    
-                <div className="container-text-description">
-                    <h2>Descripción del producto</h2>
-                    <h3>{texto.plain_text}</h3>
+        <div className="title">
+                <div className="container-title">                    
+                        {/* {category.filters?.[0].values?.[0].name} */}asdasd                    
                 </div>
-            </div>   
-                  
+            </div>                
+            <div className="description">
+                <div className="container">
+                    <div className="row-mid">
+                        <div className="img-container">
+                            <img className="image-detail" src={datos.pictures?.[0].url} alt={datos.title}></img>
+                        </div>
+                        <div className="container-name">
+                            <p className="sale-quantity">{ `${datos?.condition === 'new' ? 'Nuevo' : 'Usado'}` } - {datos.sold_quantity} vendidos</p>
+                            <h3 className="product-name">{datos.title}</h3>
+                            <div className="product-price">$ {datos.price}</div>
+                            <button className="comprar">Comprar</button>                    
+                        </div>                    
+                    </div>       
+                    <div className="container-text-description">
+                        <h2>Descripción del producto</h2><br/>
+                        <p className="description-long">{texto.plain_text}</p>
+                    </div>
+                </div>   
+            </div>                     
         </>
     )
 }

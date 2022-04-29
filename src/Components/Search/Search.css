@@ -1,3 +1,7 @@
+header{
+    background-color: #FFE600;
+}
+
 .container{
     background-color: #FFE600;
     display: flex;
@@ -8,7 +12,7 @@
 .input{
     margin-top: auto;
     margin-bottom: auto;
-    width: 60%;
+    width: 100%;
     padding: 10px;
     margin-left: 13px;
     border: 0;
@@ -28,7 +32,7 @@
 }
 
 .lupa{
-    padding: 10px;
+    padding: 8px;
     width: 15px;
     cursor: pointer;
 }

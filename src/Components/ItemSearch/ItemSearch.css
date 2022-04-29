@@ -2,21 +2,20 @@
 .container-title{
     display: flex;    
     color: #666666;
-    margin-left: 16%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px auto 15px;
+    max-width: 1296px;
 }
 
 .container-items{    
     background-color: white;
     display: flex;    
     position: relative;
-    margin-left: 16%;
-    margin-right: 16%;    
+    margin: auto;   
+    max-width: 1314px;
 }
 
 .container-image{
-    width: 180px;
+    max-width: 180px;
     height: 180px;   
     padding: 15px;
     border-radius: 4px;
