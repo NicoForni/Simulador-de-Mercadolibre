@@ -8,10 +8,10 @@ const Home = () => {
     return(<>
             <header>
                 <div className="container">
-                    <Link to={"/"}> <img src="/images/Logo_ML@2x.png.png" className="logo" alt="logo"></img></Link>
+                    <Link to={"/"}> <img src="/images/Logo_ML@2x.png.png" className="logo" alt="home"></img></Link>
                     <input className="input" placeholder="Nunca dejes de buscar" name="textSearch" onChange={e => setTexto(e.target.value)}></input>
                     <div className="background">
-                    <Link to={`/${texto}`}> <img src="/images/ic_Search@2x.png.png" className="lupa" id="lupa" alt="icon"></img></Link>
+                    <Link to={`/${texto}`}> <img src="/images/ic_Search@2x.png.png" className="lupa" id="lupa" alt="search"></img></Link>
                     </div>
                 </div>    
             </header>          

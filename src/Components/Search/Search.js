@@ -3,48 +3,54 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import ItemSearch from "../ItemSearch/ItemSearch";
 import Home from "../Home/Home";
+import { buscar, categoria} from "../../Services/Services";
 
 
 const Search = () => {
-    const [data, setData] = useState([]);   
+    const [info, setInfo] = useState([]);   
     const {texto} = useParams();    
     const [loading, setLoading] = useState(true)
+    const [category, setCategory] = useState([]);
+    const [item, setItem] = useState("");
 
-    const buscar = async() => {
-        try {
-            const user = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${texto}`)
-            const data = await user.json()      
-                setLoading(false)          
-                setData(data.results.slice(0,4));       
-                //console.log(data.results);                
-        } catch (error) {
-            document.write(error," Hubo un error, intente mas tarde");                    
-        }                
-    };
-    
+
 
     useEffect(() => {
-        buscar()                                           
+        buscar(texto).then(info =>{                        
+        setInfo(info.results.slice(0,4));  
+        setItem(info.results[0].category_id)  
+        setLoading(false)          
+        });        
+        
+    }, [texto]); //eslint-disable-line  
+    
+    
+    useEffect(() => {
+        const idCategoria = item
+        categoria(idCategoria).then(category=>{
+            setCategory(category)
+        });
+        
+    }, [info]); // eslint-disable-line
+    
 
-    }, [texto]) //eslint-disable-line
-      
-
-    return(<> 
-            <Home/>
-            <div className="loading">{loading && <h2>Loading products...</h2>  }</div>              
-            {data.length > 0 && texto !== undefined ?
-            (
-                <ul>                     
-                    <div className="container-title">Electronica - subcategoria - modelo</div>
-                {data.map((item) => (
-                    <ItemSearch item={item} key={item.id} />                    
-                ))}     
-                </ul> 
-            )        
-            : (null)}   
-           
-            </>
-    )
+            return(
+                <> 
+                    <Home/>
+                    <div className="loading">{loading && <h2>Loading products...</h2>  }</div>              
+                    {info.length > 0 && texto !== undefined ?
+                    (
+                        <ul>                     
+                            <div className="container-title">{category.name}</div>                            
+                        {info.map((item) => (
+                            <ItemSearch item={item} key={item.id}/>                    
+                        ))}     
+                        </ul> 
+                    )        
+                    : (null)}   
+                
+                    </>
+            )
 }
 
 export default Search;

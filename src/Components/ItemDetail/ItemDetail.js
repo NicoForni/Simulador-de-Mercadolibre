@@ -2,56 +2,41 @@ import "./ItemDetail.css";
 import React, { useEffect, useState } from 'react';
 import Search from "../Search/Search";
 import { useParams } from "react-router-dom";
+import { description, textProduct, categoria } from "../../Services/Services";
 
 
-const ItemDetail = () => {    
-    const [datos, setDatos] = useState([]);    
-    const [texto, setTexto] = useState([]); 
-    const {id} = useParams();      
-    const [category, setCategory] = useState([]);        
+const ItemDetail = () => {
+    const [datos, setDatos] = useState([]);
+    const [texto, setTexto] = useState([]);
+    const { id } = useParams();
+    const [category, setCategory] = useState([]);
     
-    const description = async() => {
-        try {
-            const description = await fetch(`https://api.mercadolibre.com/items/${id}`)
-            const datos = await description.json()  
-                setDatos(datos)   
-                //console.log(datos);                                             
-            
-        } catch (error) {
-            document.write(error," Hubo un error, intente mas tarde");
-        }
-    }
-
-    const textProduct = async() => {
-        const textProduct = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
-        const texto = await textProduct.json()
-            setTexto(texto)
-            //console.log(texto.plain_text)            
-    }
-    
-    const categoria = async() => {                     
-            const idCategoria = datos.category_id
-            //console.log(idCategoria);    
-            const categoria = await fetch(`https://api.mercadolibre.com/sites/MLA/search?category=${idCategoria}`)
-            const category = await categoria.json()
-                setCategory(category)                                                
-                //console.log(category.filters[0].values[0].name);                                  
-    }; 
 
     useEffect(() => {
-        description()
-        textProduct()
-        categoria()
-    
-    }, [id]) // eslint-disable-line
+        description(id).then(description=>{
+            setDatos(description)
+        });
+        textProduct(id).then(texto=>{
+            setTexto(texto)
+        });
 
+    }, [id]); // eslint-disable-line
+
+        useEffect(() => {
+            const idCategoria = datos.category_id
+            categoria(idCategoria).then(category=>{
+                setCategory(category)
+            });
+
+    }, [datos]); // eslint-disable-line
     
-    return(
-        <>
+    
+    return (
+      <>
         <Search/>     
         <div className="title">
                 <div className="container-title">                    
-                        {/* {category.filters?.[0].values?.[0].name} */}asdasd                    
+                        {category.name}                    
                 </div>
             </div>                
             <div className="description">
@@ -74,7 +59,7 @@ const ItemDetail = () => {
                 </div>   
             </div>                     
         </>
-    )
-}
+    );
+};
 
 export default ItemDetail;
