@@ -5,6 +5,7 @@ import ItemSearch from "../ItemSearch/ItemSearch";
 import Home from "../Home/Home";
 import { buscar, categoria} from "../../Services/Services";
 import Spinner from "../Spinner/Spinner";
+import {Helmet} from "react-helmet";
 
 const Search = () => {
     const [info, setInfo] = useState([]);   
@@ -36,6 +37,11 @@ const Search = () => {
 
             return(
                 <> 
+                    <Helmet>
+                        <title>Search</title>
+                        <meta name='description' content='Buy products with Free Shipping on the day in Mercado Libre Argentina. Find thousands of brands and products at incredible prices.'/>
+                        <meta name='keywords' content='Products,Free Shipping, Buy, Sell, Categories'/>
+                    </Helmet>
                     <Home/>
                     <div className="loading">{ loading && <Spinner/> }</div>              
                     {info.length > 0 && texto !== undefined ?

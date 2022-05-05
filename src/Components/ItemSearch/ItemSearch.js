@@ -1,12 +1,17 @@
 import "./ItemSearch.css";
 import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 
 
 const ItemSearch = ({item}) => {    
    
 
     return(
-        <>            
+        <>   
+            <Helmet>
+                <title>{item.title} | Mercadolibre</title>
+                <meta name='description' content={item.title}/>                
+            </Helmet>         
             <div className="container-items">                                                                           
                 <Link to={`/items/${item.id}`}><img className="container-image" src={item.thumbnail} alt="product" ></img></Link>
                     <div className="container-description">

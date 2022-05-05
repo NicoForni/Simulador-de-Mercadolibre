@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Search from "../Search/Search";
 import { useParams } from "react-router-dom";
 import { description, textProduct, categoria } from "../../Services/Services";
+import {Helmet} from "react-helmet";
 
 
 const ItemDetail = () => {
@@ -33,7 +34,11 @@ const ItemDetail = () => {
     
     return (
       <>
-        <Search/>     
+        <Search/> 
+        <Helmet>
+            <title>{datos.title}</title>    
+            <meta name="description" content={datos.title}/>
+        </Helmet>    
         <div className="title">
                 <div className="container-title">                    
                         {category.name}                    
