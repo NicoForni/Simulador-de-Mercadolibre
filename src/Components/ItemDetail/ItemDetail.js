@@ -54,7 +54,9 @@ const ItemDetail = () => {
                     </div>       
                     <div className="container-text-description">
                         <h2>Descripción del producto</h2><br/>
-                        <p className="description-long">{texto.plain_text}</p>
+                        <div className="container-description-long">
+                            <p className="description-long">{texto.plain_text}</p>
+                        </div>
                     </div>
                 </div>   
             </div>                     

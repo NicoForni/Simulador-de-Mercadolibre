@@ -1,7 +1,7 @@
 
 .container {
     margin: auto;
-    max-width: 1314px;
+    max-width: 1000px;
     width: 100%;
 }
 
@@ -67,4 +67,9 @@
 
 .description-long{
     color: #666666;
+    text-align: justify;
+}
+
+.container-description-long{
+    width: 68%;
 }

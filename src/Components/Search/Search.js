@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ItemSearch from "../ItemSearch/ItemSearch";
 import Home from "../Home/Home";
 import { buscar, categoria} from "../../Services/Services";
-
+import Spinner from "../Spinner/Spinner";
 
 const Search = () => {
     const [info, setInfo] = useState([]);   
@@ -37,7 +37,7 @@ const Search = () => {
             return(
                 <> 
                     <Home/>
-                    <div className="loading">{loading && <h2>Loading products...</h2>  }</div>              
+                    <div className="loading">{ loading && <Spinner/> }</div>              
                     {info.length > 0 && texto !== undefined ?
                     (
                         <ul>                     
